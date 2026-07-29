@@ -1,31 +1,27 @@
 class MyStack:
 
     def __init__(self):
-        self.stack=[]
-        self.t=-1
-        
-        
+        self.q1 = deque()
+        self.q2 = deque()
 
     def push(self, x: int) -> None:
-        self.stack.append(x)
-        self.t+=1
+        self.q2.append(x)
 
+        while self.q1:
+            self.q2.append(self.q1.popleft())
+        self.q1, self.q2 = self.q2, self.q1
         
 
     def pop(self) -> int:
-        if self.t==-1:
-            return "Underflow"
-        val=self.stack.pop()
-        self.t-=1
-        return val
+        return self.q1.popleft()
         
 
     def top(self) -> int:
-        return self.stack[self.t]
+        return self.q1[0]
         
 
     def empty(self) -> bool:
-        return False if  self.stack else True
+        return not self.q1
         
 
 
