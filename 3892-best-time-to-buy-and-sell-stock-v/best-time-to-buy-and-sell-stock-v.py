@@ -12,15 +12,11 @@ class Solution:
                     dp[a][b]=float("-inf")
         prev=[row[:] for row in dp]
         for a in range(i-1,-1,-1):
-            for b in range(3):
-                for c in range(1,k+1):
-                    if b==0:
-                        profit=max(-prices[a]+prev[1][c],prev[0][c],prices[a]+prev[2][c])
-                    elif b==1:
-                        profit=max(prev[1][c],prices[a]+prev[0][c-1])
-                    else:
-                        profit=max(prev[2][c],-prices[a]+prev[0][c-1])
-                    dp[b][c]=profit
+            for c in range(1,k+1):
+                dp[0][c]=max(-prices[a]+prev[1][c],prev[0][c],prices[a]+prev[2][c])
+                dp[1][c]=max(prev[1][c],prices[a]+prev[0][c-1])
+                dp[2][c]=max(prev[2][c],-prices[a]+prev[0][c-1])
+                    
             prev=[row[:] for row in dp]
         return dp[0][k]
 
