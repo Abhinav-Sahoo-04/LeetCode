@@ -5,9 +5,11 @@ class Solution:
         for i in range(n-1,-1,-1):
             mini=float("inf")
             temp=""
+            rev=""
             for k in range(i,n):
                 temp+=s[k]
-                if temp==temp[::-1]:
+                rev=s[k]+rev
+                if temp==rev:
                     cost=1+dp[k+1]
                     mini=min(cost,mini)
             dp[i]=mini
