@@ -5,7 +5,6 @@ class Solution:
         temp=intervals[0]
         for i in range(len(intervals)):
             if intervals[i][0]<=temp[1]:
-                temp[0]=min(temp[0],intervals[i][0])
                 temp[1]=max(temp[1],intervals[i][1])
             else:
                 res.append(temp)
