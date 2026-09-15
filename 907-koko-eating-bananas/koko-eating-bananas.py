@@ -1,12 +1,10 @@
 class Solution:
     def minEatingSpeed(self, arr: List[int], h: int) -> int:
         high=max(arr)
-        low=0
+        low=1
         ans=high
         while low<=high:
             mid=(low+high)//2
-            if mid==0:
-                break
             hours=0
             for i in arr:
                 hours+=(i+mid-1)//mid
