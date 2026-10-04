@@ -11,8 +11,10 @@ class Solution:
         res=""
         while n!=0:
             if maps[j][0]<=n:
-                res+=maps[j][1]
-                n-=maps[j][0]
+                for i in range(1,4):
+                    if maps[j][0]*i<=n:
+                        res+=maps[j][1]*i
+                        n-=maps[j][0]*i
             else:
                 j-=1
         return res
